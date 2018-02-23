@@ -1,0 +1,47 @@
+<div class="container col-lg-5 padding-top-xl">
+  <h1 class="text-info text-center "> {{title}} </h1>
+
+  <form #loginForm="ngForm">
+    <!-- <div class="form-group">
+      <input name="email" type="email" class="form-control" 
+      placeholder="Enter email" [(ngModel)]="email" required>
+    </div>   -->
+    <div class="form-group">
+      <input type="text" class="form-control" id="email" placeholder="Email" name="email" 
+          required 
+          [(ngModel)]="user.username"
+          #checkEmail="ngModel"> 
+          <!-- <div> this is {{user.username}} </div> -->
+      <div [hidden]="checkEmail.valid || checkEmail.pristine" class="alert alert-danger">
+        Email is required
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <input type="password" class="form-control" id="password" placeholder="Password" name="password"
+          [(ngModel)]="user.password"
+      >
+    </div>
+
+
+    <div class="form-group text-center">
+      <div>
+        Signup to get the experience.
+        <a [routerLink]="['/auth/register']">
+          <span class="text-primary"> Register </span>
+        </a>
+      </div>
+      <div class="padding-top-md">
+        <button type="submit" class="btn btn-primary" (click)='onSubmit()' [disabled]="!loginForm.valid">Submit</button>
+      </div>
+      <div class="padding-top-md">
+        <button type="submit" class="btn btn-primary" (click)='backendCheck()'> check backen</button>
+      </div>
+      <div class="padding-top-md">
+        <button type="submit" class="btn btn-primary" (click)='getCity()'> Get W3 Data</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
